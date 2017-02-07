@@ -15,7 +15,7 @@ headers = {
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
 }
 proxy = {
-    'http': 'socks5://127.0.0.1:1084'
+    'http': 'socks5://127.0.0.1:1084'     # Don't forget to change to your own proxy port
 }
 
 
@@ -58,12 +58,6 @@ class __Query:
         #print(soup.contents[9].find_all('div',{'class': "tpc_content"})[0].get_text())       # SoupStrainer advanced usage
         try:
             for a in soup.contents[1:]:
-                '''if a.find_all('div',{'class': "tpc_content"})[0].find_all('blockquote'):
-                    print("Quote: {}Post: {}".format(
-                            a.find_all('div',{'class': "tpc_content"})[0].find_all('blockquote')[0],
-                            a.find_all('div',{'class': "tpc_content"})[0].find_all('br')
-                            ))'''
-                # print(type(a.find_all('div',{'class': "tpc_content"})[0].get_text()))
                 for arg in kw:
                     if arg in a.find_all('div',{'class': "tpc_content"})[0].get_text():
                         print("Found: {} \n URL: {}".format(a.find_all('div',{'class': "tpc_content"})[0].get_text(),url))
@@ -74,7 +68,6 @@ class __Query:
 try:
     test = __Query()
     test.count(test.show_url())
-    # test.look_up('http://t66y.com/read.php?tid=2242822&page=22','白咲碧')
     for i in List2:
         test.look_up(i,key_word)
 except:
